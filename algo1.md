@@ -1,6 +1,14 @@
 % Complexidade de Algoritmos
 % Paulino Ng
-% 2020-02-26
+% 2020-03-13
+
+## Plano da aula
+
+1. Ementa e bibliografia da disciplina
+2. Por que estudar a complexidade de algoritmos?
+3. Recapitulação: o que são algoritmos?
+4. Como vamos apresentar os algoritmos?
+5. Exemplos simples de análise de algoritmos
 
 ## Ementa
 
@@ -36,6 +44,7 @@ São Paulo: McGraw-Hill, 2009.
 
 ## Complexidade de um programa simples
 
+- Por que estudar a complexidade de algoritmos?
 - Nesta e nas próximas transparências, vamos usar o C no exemplo
 - Seja o programa simples abaixo [HMU]:
 
@@ -83,6 +92,8 @@ void main() {
   - Os matemáticos levaram mais de 300 anos para concluir que o teorema de Fermat, $x^n + y^n = z^n$, para x, y, z, n naturais só tem solução para n = 2 estava certo.
 
   ### Como saber se um programa termina?
+
+  > Esta é uma questão muito difícil de responder.
 
 ## Execução no NetBeans com cygwin32
 
@@ -141,13 +152,24 @@ funcao fib1(n)
   - os operadores lógicos `and` e `or` são preguiçosos, isto é, assim que o resultado da operação é conhecido, os outros operandos não são calculados.
   - a palavra-chave `error` é usada para indicar erro no cálculo do procedimento, ela deve ser tratada por chamador do procedimento.
 
+## O que significa analisar um algoritmo?
+
+* Desejamos saber quantos recursos computacionais são necessários para um algoritmo resolver um problema com uma entrada de tamanho **n**.
+* Existem diferentes recursos computacionais que um algoritmo necessita. Por exemplo:
+  - tempo de processamento;
+  - espaço memória;
+  - operações de entrada/saída;
+  - operações de leitura e escrita em disco;
+  - comunicação em rede.
+* Nesta disciplina estamos apenas interessados no tempo de execução.
+
 ## Análise de Algoritmos
 
 * Knuth diz que na área de análise de algoritmos, existem 2 tipos de problemas bem distintos:
-  1. Análise de um algoritmo particular
+  1. Análise de um algoritmo especifico
   2. Análise de uma classe de algoritmos
 * [CLRS] diz que precisamos de um modelo do computador que pretendemos usar. Modelos possíveis:
-  - Máquina de Turing: teórico, muito complexo para algoritmos mais complexos
+  - Máquina de Turing: modelo teórico, muito complexo para algoritmos mais complexos
   - Máquina MIX: programação quase *assembly*
   - Máquina de Acesso Aleatório (RAM): modelo não muito preciso quanto ao conjunto de instruções, apenas define que as instruções são executadas uma depois da outra, isto é, não existem operações concorrentes. A RAM contem as instruções típicas de um computador: aritméticas, movimentação de dados, controle de fluxo (condicionais, desvios, chamadas de rotinas, retornos). Cada instrução leva um tempo constante para executar. Os tipos de dados são inteiros e ponto flutuante.
 
@@ -169,7 +191,7 @@ public static int max(int v[], int n) {
 
 ## Diferentes possibilidades
 
-```
+```Java
 public static int[] maxMin1(int v[], int n) {
   int max = v[0], min = v[0];
   for (int i = 1; i < n; i++) {
@@ -190,11 +212,18 @@ Esta implementação do procedimento para achar o maior e o menor elemento  de u
 
 > caso médio: f(n) = (3n - 3)/2 (vetor não pré-ordenado)
 
-## Insert sort com análise mais detalhada [CLRS]
+## Insert sort (ordenação por inserção) com análise mais detalhada [CLRS]
 
 ![Análise do insert_sort](insert_sort.png)
 
 $T(n) = c_1n + c_2(n-1) + c_4(n-1) +c_5\sum_{j=2}^nt_j + c_6\sum_{j=2}^n(t_j-1)+c_7\sum_{j=2}^n(t_j-1) + c_8(n-1)$
+
+## Nível da Análise
+
+* Enquanto Ziviani propõe analisar os programas para encontrar o mínimo e o máximo pela contagem do número de comparações, CLRS nos mostra como equacionar o tempo de execução de um algoritmo em RAM contando o tempo em cada instrução.
+* A análise de complexidade de algoritmos, em geral, não precisa de tantos detalhes como no equacionamento de CLRS, até mesmo a análise realizada por Ziviani é muito detalhada o que se procura em geral.
+* O que pretendemos entender é como o algoritmo se comporta para uma entrada com um **n** muito grande e como o tempo de execução cresce com o aumento de n *grande*.
+* O *significado de n grande* depende muito do tipo de problema e do algoritmo.
 
 ## Exercício
 
