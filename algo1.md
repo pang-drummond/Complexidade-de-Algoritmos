@@ -13,10 +13,31 @@
 - Estratégias para projetar algoritmos.
 - Métodos de redução de problemas.
 
+## Bibliografia
+
+### Básica
+
+[ZIVIANI] Nivio ZIVIANI, Projeto de Algoritmos: com implementações em Java e C++,
+São Paulo: Cengage Learning, 2013.
+
+[CLRS] Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest & Clifford Stein,
+Algoritmos: Teoria e Prática, 3&ordf; Ed., Rio de Janeiro: Elsevier, 2012.
+
+### Apoio
+
+[HMU] John E. Hopcroft, Rajeev Motwani & Jeffrey D. Ullman, Introduction to
+Automata Theory, Languages, and Computation, 2nd Ed., Boston: Addison-Wesley, 2001.
+
+[DPV] Sanjoy Dasgupta, Christos Papadimitriou & Umesh Vazirani, Algoritmos,
+São Paulo: McGraw-Hill, 2009.
+
+[CORMEN] Thomas H. Cormen, Desmitificando Algoritmos, Rio de Janeiro: Elsevier,
+2013.
+
 ## Complexidade de um programa simples
 
 - Nesta e nas próximas transparências, vamos usar o C no exemplo
-- Seja o programa simples abaixo:
+- Seja o programa simples abaixo [HMU]:
 
 ```C
 void main()
@@ -67,7 +88,7 @@ void main() {
 
 ![Execução do programa hellox dentro do NetBeans.](hellox.png)
 
-## O que são algoritmos? (CLRS)
+## O que são algoritmos? [CLRS]
 
 * Um **algoritmo** é um procedimento computacional bem definido que recebe um valor, ou um conjunto de valores, como **entrada** e produz algum valor, ou um conjunto de valores, como **saída**. Um algoritmo é uma sequência de passos computacionais que transformam a entrada na saída.
 
@@ -75,9 +96,8 @@ void main() {
 
 ## Problema a ser resolvido
 
-* Algoritmos servem para resolver *problemas computacionais*. Os problemas precisam ser bem definidos.
+* Algoritmos servem para resolver *problemas computacionais*. Os problemas precisam ser *bem* definidos.
 * Exemplo: Problema da ordenação de uma sequência de números
-
 
 > **Entrada**: Uma sequência de n números $\{a_1, a_2, \ldots , a_n\}$.
 > **Saída**: Uma permutação (reordenação) $\{a_1', a_2', \ldots , a_n'\}$ da sequência de entrada tal que $a_1' \leq a_2' \leq \ldots \leq a_n'\}$
@@ -85,7 +105,7 @@ void main() {
 ## Apresentação dos Algoritmos
 
 * Os algoritmos nesta disciplina serão apresentados em alguma linguagem de programação ou em pseudo-código
-* Exemplo em linguagem:
+* Exemplo em linguagem, Java:
 
 ```java
 public static int max(int v[], int n) {
@@ -95,7 +115,7 @@ public static int max(int v[], int n) {
 }
 ```
 
-## Pseudo-código
+## Pseudo-código (em português)
 
 ```
 funcao fib1(n)
@@ -106,10 +126,10 @@ funcao fib1(n)
 
 ## Regras para o pseudo-código
 
-* Vamos seguir as regras para pseudo-código do livro "Introdução a Algorítmos" [CLRS]
+* Vamos seguir as regras para pseudo-código do livro "Algorítmos" [CLRS]
   - as variáveis não são declaradas, nem obrigatoriamente inicializadas, elas são locais aos algoritmos/procedimentos. Não são usadas variáveis globais
   - identação \(tabulação\) para indicar bloco
-  - as malhas de repetição \(loops\) usam `while`, `for` e `repeat` semelhante ao Pascal. O `for` é uma malha de repetição controlada por um contador cujo valor final, o de saída, pode ser usado depois da malha. Ele usa `to` se o contador incrementa e `downto` se o contador decrementa, além disso o passo é declarado com `by`, opcionalmente.
+  - as malhas de repetição \(loops\) usam `while`, `for` e `repeat` semelhante ao Pascal. O `for` é uma malha de repetição controlada por um contador cujo valor final, o de saída, pode ser usado depois da malha. Ele usa `to` se o contador incrementa e `downto` se o contador decrementa, além disso o passo é declarado, opcionalmente, com `by`.
   - comentários são introduzidos com `//`
   - atribuições múltiplas são válidas: `a = b = c = sin(3.14159/4)`
   - elementos dos *arrays* são acessados por colchetes, `A[1]`. Dois pontos são usados para indicar os índices de um *sub-array*, `A[2..5]`
@@ -133,7 +153,7 @@ funcao fib1(n)
 
 ## Análise de um algoritmo simples
 
-Seja o algoritmo simples para encontrar o maior elemento de um vetor
+Seja o algoritmo simples para encontrar o maior elemento de um vetor [ZIVIANI]
 
 ```java
 public static int max(int v[], int n) {
@@ -170,7 +190,7 @@ Esta implementação do procedimento para achar o maior e o menor elemento  de u
 
 > caso médio: f(n) = (3n - 3)/2 (vetor não pré-ordenado)
 
-## Insert sort com análise mais detalhada
+## Insert sort com análise mais detalhada [CLRS]
 
 ![Análise do insert_sort](insert_sort.png)
 
@@ -185,3 +205,5 @@ Proponha um algoritmo para calcular o valor de um polinômio.
 *Saída*: valor de $P(x) = a_n x^n + a_{n-1} x^{n-1} + \ldots + a_1 x + a_0$
 
 * Analise a complexidade do seu algoritmo
+* Se seu algoritmo não usava a técnica de Tataglia para calcular o valor do polinômio, veja quantas operações são necessárias para calcular o polinômio com o método de Tataglia:
+$a_0 + x \cdot (a_1 + x \cdot (a_2 + x \cdot ( \ldots x \cdot (a_{n-1} + x \cdot a_n))))$
