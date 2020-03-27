@@ -1,5 +1,5 @@
 
-all: algo1.pdf algo2.pdf
+all: algo1.pdf algo2.pdf algo3.pdf
 
 
 pde.pdf: pde.md
@@ -10,3 +10,6 @@ algo1.pdf: algo1.md
 
 algo2.pdf: algo2.md
 	pandoc -t beamer --slide-level=2 -f markdown algo2.md -o algo2.pdf
+
+algo3.pdf: algo3.md
+	pandoc -t beamer --slide-level=2 -f markdown algo3.md -o algo3.pdf
