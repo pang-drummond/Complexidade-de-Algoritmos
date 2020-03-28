@@ -94,11 +94,42 @@ $\begin{array}{|r@{\ =\ }l|}\hline f(n)&\mathcal{O}(f(n))\\ c\ \times \mathcal{O
   - Exemplo: $g(n)=3\ n^3+2\ n^2$ é $\Omega(n^3)$
 * Definição notação $\Theta$: Uma função $g(n)$ é $\Theta(f(n))$ se existirem constantes positivas $c_1$, $c_2$ e $m$ tais que $0\leq c_1\ f(n) \leq g(n)\leq c_2\ f(n)$, para todo $n\geq m$.
   - $c_1f(n)$ está abaixo de $g(n)$, $c_2f(n)$ está acima de $g(n)$, dizemos que $f(n)$ é um **limite assintótico firme** de $g(n)$.
+
+## Mais definições
+
 * Definição notação $o$: Uma função $g(n)$ é $o(f(n))$ se, para qualquer constante $c>0$, então $0\leq g(n) < c\ f(n),\ \forall n\geq m$.
   - Exemplo: $2n=o(n^2)$, mas $2n^2\not= o(n^2)$
-
-## Mais uma definição e Exercícios
-
   - A diferença entre $\mathcal{O}$ e $o$ é que na big-O existe uma constante $c$ e na $o$ a relação vale para todo $c$ positivo.
-* Definição da notação $\omega$: Uma função $g(n)$ é $\omega(f(n))$ se, para qualquer constante $c>0$, então $0\leq c\ f(n) \leq g(n),\ \forall n\geq m$.
+* Definição da notação $\omega$: Uma função $g(n)$ é $\omega(f(n))$ se, para qualquer constante $c>0$, então $0\leq c\,f(n) \leq g(n),\,\forall n\geq m$.
   - Exemplo: $\frac{n^2}{2}=\omega(n)$, mas $\frac{n^2}{2}\not=\omega(n^2)$
+
+## Classes de Comportamento
+
+* Se $f$ é uma **função de complexidade** para um algoritmo $F$, então $\mathcal{O}(f)$ é considerada a **complexidade assintótica** ou o comportamento assintótico do algoritmo $F$.
+* Um programa com tempo de execução $\mathcal{O}(n)$ é melhor do que um programa com tempo de execução $\mathcal{O}(n^2)$ para $n$ acima de um certo valor.
+* A maioria dos algoritmos possui um parâmetro que afeta mais significativamente o tempo de execução do que os outros. Em geral, este parâmetro é o número de itens a ser processado.
+* O $n$ que representa o tamanho da entrada pode ser: o número de registros num arquivo ou o número de nós de um grafo.
+
+##
+* As principais **classes de problemas** com suas **funções de complexidade** são:
+  1. $f(n)=\mathcal{O}(1)$: Algoritmos de **complexidade constante**.
+  2. $f(n)=\mathcal{O}(\log n)$: Algoritmos de **complexidade logarítmica**.
+  3. $f(n)=\mathcal{O}(n)$: Algoritmos de **complexidade linear**.
+  4. $f(n)=\mathcal{O}(n\,\log n)$: Algoritmos que resolvem um problema particionando-o em problemas menores e resolvendo os problemas menores para compor a solução do problema original.
+  5. $f(n)=\mathcal{O}(n^2)$: Algoritmos de **complexidade quadrática**.
+  6. $f(n)=\mathcal{O}(n^3)$: Algoritmos de **complexidade cúbica**.
+  7. $f(n)=\mathcal{O}(2^n)$: Algoritmos de **complexidade exponencial**.
+  8. $f(n)=\mathcal{O}(n!)$: Algoritmos de **complexidade fatorial**, ou **complexidade combinatório**.
+
+## Técnicas para Análise de Algoritmos
+
+* Aho, Hopcroft e Ullman enumeram alguns princípios a serem seguidos na análise de algoritmos, não existem técnicas gerais:
+  1. O tempo de execução de um comando de atribuição, de leitura ou de escrita pode ser considerado $\mathcal{O}(1)$.
+  2. O tempo de execução de uma sequência de comandos é determinado pelo maior tempo de execução de qualquer comando da sequência.
+  3. O tempo de execução de um comando de decisão é composto pelo tempo de execução dos comandos executados dentro do comando condicional mais o tempo para calcular a condição, $\mathcal{O}(1)$.
+  4. O tempo para executar um laço é a soma do tempo de execução do corpo do laço mais o tempo de calcular a condição para terminar multiplicado pelo número de iterações do laço.
+
+##
+
+  5. Quando o programa possui procedimentos não recursivos, o tempo de execução de cada procedimento deve ser computado separadamente, um a um, iniciando com os procedimentos que não chamam outros procedimentos. A seguir devem ser avaliados os procedimentos que chamam os procedimentos cujos tempos já foram computados. Esse processo é repetido até chegar ao programa principal.
+  6. Quando o programa possui **procedimentos recursivos**, a cada procedimento é associada uma função de complexidade $f(n)$ desconhecida, na qual $n$ mede o tamanho dos argumentos para o procedimento, conforme veremos depois.
