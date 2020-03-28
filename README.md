@@ -18,3 +18,6 @@ com um comando do tipo:
 Observe que para usar este tipo de comando, você deve ter instalado, o LaTEX e os pacotes usados como o beamer e
 o pandoc. Por causa do uso do pandoc, o markdown não é o mesmo do github, mas a versão do pandoc, veja a documentação
 inclusa no pandoc. Uma grande diferença é o uso de muito LaTEX nos arquivos MD.
+
+PS.: Alguns dos PDFs foram baixados de outros sites e servem de consulta. Em particular, os PDFs com as transparências
+do livro do Ziviani são da Universidade Federal de Minas Gerais.
