@@ -28,7 +28,7 @@ $\begin{array}{c|c|c|c|c|c|c|c|} &1&1&1&1&1&1&1\\&segundo&minuto&hora&dia&mes&an
 * $2^n=10^6\rightarrow n=6.\log_2 10\approx 20$
 * $n!=10^6\rightarrow n\approx 9$
 
-Calcule o restante da tabela. Observe como o aumento do tempo não resulta num aumento muito significativo do n para as duas últimas funções.
+Calcule o restante da tabela. Observe como o aumento do tempo não resulta num aumento muito significativo do $n$ para as duas últimas funções.
 
 -------------------------------------------   --------------------------------------------------
                              $1s=10^6\mu s$    $1\textrm{min}=60\;.\;10^6\mu s=6\;.\;10^7\mu s;$
@@ -36,6 +36,12 @@ Calcule o restante da tabela. Observe como o aumento do tempo não resulta num a
      $1\textrm{mes}=2,592\;.\;10^{12}\mu s$              $1\textrm{ano}=3,1104\;.\;10^{13}\mu s$
  $1\textrm{século}=3,1104\;.\;10^{16}\mu s$
 -------------------------------------------   --------------------------------------------------
+
+## Observações sobre este Exercício
+
+* No lugar de calcular o tempo para cada uma destas funções para um dado tamanho \($n$\), o exercício pede algo mais prático (e difícil de ser calculado) que é o maior problema que podemos resolver com um algoritmo que tenha a função como tempo de execução.
+* É óbvio que não desejamos usar um computador para resolver problemas que precisem de 1 século de cálculo para ser resolvido. Mas o que interessa neste exercício é entender que mesmo se um computador não quebrar durante a execução de um programa durante um século de execução, o problema resolvido não terá sido muito maior do que o que precisou de uma hora para ser resolvido, se a função for exponencial ou fatorial.
+* Conforme veremos, existem problemas que não podem ser resolvidos muito rapidamente \(com uma função de complexidade simples\). Estes problemas limitam o melhor algoritmo que pode ser usado para resolvê-los.
 
 ## Assíntotas
 

@@ -136,3 +136,12 @@ Somatória de séries finitas. Seja a sequência: ${a_0, a_1, \ldots, a_{n-1}}$:
   - $f(n)=a^n=\underbrace{a.a.\ldots. a}_n$, função exponencial.
   - $f(n)=n!=1.2.\ldots.n=\prod\limits_{i=1}^n i$, função fatorial
 * Exercício: plote o gráfico destas funções para $n\in[1,10]$
+
+## Análise das Funções
+
+* Estas funções crescem de maneiras diferentes. Na análise de algoritmos, estas funções aparecem como funções de complexidade do algoritmo.
+* Uma função de complexidade, em geral, é uma aproximação do comportamento de gastos de um, ou mais, recurso computacional (normalmente o tempo).
+* O maior interesse neste tipo de análise é para o que acontece quando o n \(tamanho da entrada\) aumenta.
+* Estamos preocupados em saber se conseguiremos resolver um problema de grande tamanho com o algoritmo.
+* De maneira geral, a nossa análise não se preocupa com problemas pequenos. Observe que o melhor algoritmo para problemas grandes pode não ser o melhor algoritmo para pequenos problemas. Mas, na solução de um problema grande, podem aparecer pequenos problemas que devem ser resolvidos muitas vezes e em alguns casos pode ser melhor usar o algoritmo *menos bom* para grandes problemas.
+* As funções listadas estão em ordem de aumento para grandes valores de $n$. Isto é, para um grande valor de $n$, um aumento dele nas funções debaixo da listagem produzem um aumento maior nas funções.
