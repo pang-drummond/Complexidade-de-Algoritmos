@@ -14,6 +14,36 @@ Esta aula apresenta a análise assintótica de alguns algoritmos simples.
 
 ## Exercício discursivo ENADE-2017
 
+Listas lineares armazenam uma coleção de elementos. A seguir, é apresentada a declaração de uma lista simplesmente encadeada.
+```C
+struct ListaEncadeada {
+  int dado;
+  struct ListaEncadeada *proximo;
+};
+```
+<!-- -* -->
+Para imprimir os seus elementos da cauda para a cabeça \(do final para o início\) de forma eficiente, um algoritmo pode ser escrito da seguinte forma:
+```C
+void mostrar(struct ListaEncadeada *lista) {
+  if (lista != NULL) {
+    mostrar(lista->proximo);
+    printf("%d ", lista->dado);
+  }
+}
+```
+
+##
+
+Com base no algoritmo apresentado, faça o que se pede nos itens a seguir:
+
+a) Apresente a classe de complexidade do algoritmo, usando a notação $\Theta$.
+b) Considerando que já existe implementada uma estrutura de dados do tipo pilha de inteiros - com as operações de empilhar, desempilhar e verificar pilha vazia - reescreva o algoritmo de forma não recursiva, mantendo a mesma complexidade. Seu algoritmo pode ser escrito em português estruturado ou em alguma linguagem de programação, como C, Java ou Pascal.
+
+## Solução
+
+1. O algoritmo percorre a lista recursivamente, passando por cada nó uma única vez, logo, o algoritmo é: $\Theta(n)$
+2. O "programa" para fazer o que é solicitado, faz um laço onde se desempilha um item, imprime, empilha numa pilha auxiliar. Estas operações são realizadas enquanto a pilha não estiver vazia. Após esvaziar a pilha original, deve-se fazer um novo laço para reempilhar os itens na pilha original.
+
 ## Teorema mestre para funções recursivas
 
 Sejam $a\geq 1$ e $b>1$ constantes, $f(n)$ uma função assintoticamente positiva e $T(n)$ uma medida de complexidade definida sobre os inteiros. A solução da equação de recorrência:
