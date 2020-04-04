@@ -41,8 +41,50 @@ b) Considerando que já existe implementada uma estrutura de dados do tipo pilha
 
 ## Solução
 
-1. O algoritmo percorre a lista recursivamente, passando por cada nó uma única vez, logo, o algoritmo é: $\Theta(n)$
-2. O "programa" para fazer o que é solicitado, faz um laço onde se desempilha um item, imprime, empilha numa pilha auxiliar. Estas operações são realizadas enquanto a pilha não estiver vazia. Após esvaziar a pilha original, deve-se fazer um novo laço para reempilhar os itens na pilha original.
+a) O algoritmo percorre a lista recursivamente, passando por cada nó uma única vez, logo, o algoritmo é: $\Theta(n)$
+b) O "programa" para fazer o que é solicitado, faz um laço onde se desempilha um item, imprime, empilha numa pilha auxiliar. Estas operações são realizadas enquanto a pilha não estiver vazia. Após esvaziar a pilha original, deve-se fazer um novo laço para reempilhar os itens na pilha original.
+
+## Busca de um valor num vetor
+
+Seja o código:
+```C
+int busca(int *vi, int n, int val) {
+  int i;
+  for (i = 0; i < n; i++)
+    if (vi[i] == val) return i;
+  return -1;
+}
+```
+Se o valor `val` fizer parte do vetor, a função retorna o índice do vetor onde está o valor, se não, a função retorna -1.
+
+> No melhor caso, o valor está na primeira posição: $f(n) = 1$
+> No pior caso, o valor está no fim do vetor ou não está no vetor: $f(n) = n$
+> No caso médio: $f(n) = \frac{n}{2}$
+
+## Busca de um valor num vetor ordenado
+
+```C
+int busca2(int *vi, int n, int val) {
+  int sup = n, inf = 0, meio = n/2;
+  while (sup > inf) {
+    if (vi[meio] == val) return meio;
+    if (val > vi[meio]) inf = meio;
+    else                sup = meio;
+    meio = (sup + inf + 1)/2;
+  }
+  if (vi[inf] == val) return inf;
+  return -1;
+}
+```
+A cada passagem no laço, o espaço de busca diminui pela metade. O espaço fica reduzido a 1 elemento em $\log_2n$ iterações. Logo:
+
+> No melhor caso, $f(n) = 1$
+> No pior caso, $f(n) = lg n$
+> O caso médio é próximo do pior caso, $f(n)=lg n$
+
+## Divisão e conquista
+
+O problema é dividido em problemas menores recursivamente até que sejam tão pequenos que possamos calcular a solução. Exemplo: cálculo do fatorial recursivo e cálculo do n-ésimo número da sequência de Fibonacci.
 
 ## Teorema mestre para funções recursivas
 
