@@ -58,7 +58,9 @@ int busca(int *vi, int n, int val) {
 Se o valor `val` fizer parte do vetor, a função retorna o índice do vetor onde está o valor, se não, a função retorna -1.
 
 > No melhor caso, o valor está na primeira posição: $f(n) = 1$
+
 > No pior caso, o valor está no fim do vetor ou não está no vetor: $f(n) = n$
+
 > No caso médio: $f(n) = \frac{n}{2}$
 
 ## Busca de um valor num vetor ordenado
@@ -78,13 +80,26 @@ int busca2(int *vi, int n, int val) {
 ```
 A cada passagem no laço, o espaço de busca diminui pela metade. O espaço fica reduzido a 1 elemento em $\log_2n$ iterações. Logo:
 
-> No melhor caso, $f(n) = 1$
-> No pior caso, $f(n) = lg n$
+> No melhor caso, $f(n) = 1$, o elemento do meio.
+
+> No pior caso, $f(n) = lg n$ \(o espaço de busca se reduziu a 1, ou o elemento não está no vetor\).
+
 > O caso médio é próximo do pior caso, $f(n)=lg n$
 
 ## Divisão e conquista
 
-O problema é dividido em problemas menores recursivamente até que sejam tão pequenos que possamos calcular a solução. Exemplo: cálculo do fatorial recursivo e cálculo do n-ésimo número da sequência de Fibonacci.
+* A `busca2()` pode ser reescrita como uma busca recursiva:
+```C
+int busca_rec(int *vi, int ini, int fim, int val) {
+  if (ini == fim) return (vi[ini] == val) ? ini : -1;
+  int meio = (fim + ini)/2;
+  if (vi[meio] == val) return meio;
+  if (meio == ini) return (vi[fim] == val) ? fim : -1;
+  if (val > vi[meio]) return busca_rec(vi, meio, fim, val);
+  else return busca_rec(vi, ini, meio, val);
+}
+```
+* O problema é dividido em problemas menores recursivamente até que sejam tão pequenos que possamos calcular a solução. Exemplo: cálculo do fatorial recursivo e cálculo do n-ésimo número da sequência de Fibonacci.
 
 ## Teorema mestre para funções recursivas
 
