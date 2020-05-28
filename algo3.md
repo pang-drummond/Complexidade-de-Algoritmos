@@ -139,3 +139,10 @@ $\begin{array}{|r@{\ =\ }l|}\hline f(n)&\mathcal{O}(f(n))\\ c\ \times \mathcal{O
 
   5. Quando o programa possui procedimentos não recursivos, o tempo de execução de cada procedimento deve ser computado separadamente, um a um, iniciando com os procedimentos que não chamam outros procedimentos. A seguir devem ser avaliados os procedimentos que chamam os procedimentos cujos tempos já foram computados. Esse processo é repetido até chegar ao programa principal.
   6. Quando o programa possui **procedimentos recursivos**, a cada procedimento é associada uma função de complexidade $f(n)$ desconhecida, na qual $n$ mede o tamanho dos argumentos para o procedimento, conforme veremos depois.
+
+
+## Exercício
+
+1. Este exercício procura mostrar que a complexidade depende do que se considera como tamanho da entrada, n.
+   a. Seja N um número inteiro positivo escrito na base 10, analise a complexidade do algoritmo para encontrar o seu valor binário \(base 2\) pelas divisões sucessivas por 2. O tamanho do problema inicial é o próprio valor de N.
+   b. Seja o mesmo problema do item a., mas agora o tamanho do problema é dado pelo número de digitos de N.
