@@ -184,7 +184,14 @@ int fibo_rec(int n) {
 ```
 
   - Curto, elegante e que segue exatamente a definição matemática tem complexidade $\Theta(2^n)$.
-- É fácil reescrever de maneira iterativa este cálculo com:
+
+## Árvore de chamadas do fibo_rec()
+
+![Árvore de chamadas](rec_fibo.png)
+
+## (cont.)
+
+  - É fácil reescrever de maneira iterativa este cálculo com:
 
 ```C
 int fibo_iter(int n) {
@@ -200,7 +207,10 @@ int fibo_iter(int n) {
 ```
 
   - Este algoritmo iterativo tem complexidade $\Theta(n)$.
-  - Para os alunos de programação funcional que possam achar que devido a isto, algoritmos iterativos são sempre melhores. Observe que é possível escrever um `fibo_rec()` com complexidade $\Theta(n)$.
+
+## (cont.)
+
+Para os alunos de programação funcional que possam achar que devido a isto, algoritmos iterativos são sempre melhores. Observe que é possível escrever um `fibo_rec()` com complexidade $\Theta(n)$.
 
 ```C
 int fibo_aux(int n, int val1, int val2) {
