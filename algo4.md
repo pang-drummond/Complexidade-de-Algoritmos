@@ -69,7 +69,7 @@ Se o valor `val` fizer parte do vetor, a função retorna o índice do vetor ond
 
 ```C
 int busca2(int *vi, int n, int val) {
-  int sup = n, inf = 0, meio;
+  int sup = n-1, inf = 0, meio;
   while (sup >= inf) {
     meio = (sup + inf)/2;
     if (vi[meio] == val) return meio;
@@ -85,7 +85,7 @@ A cada passagem no laço, o espaço de busca diminui pela metade. O espaço fica
 
 > No pior caso, $f(n) = lg\ n$
 
-> O caso médio é próximo do pior caso, $f(n)=lg\ n$. A complexidade é $\mathcal{O}(n)$.
+> O caso médio é próximo do pior caso, $f(n)=lg\ n$. A complexidade é $\mathcal{O}(lg\ n)$.
 
 ## Divisão e conquista
 
