@@ -14,9 +14,9 @@ Esta aula apresenta alguns algoritmos de ordenação e uma análise de sua compl
 
 ## Problema da Ordenação
 
-> Entrada:
->
-> Saída:
+* **Entrada**: sequência (vetor ou lista) de $n$ dados $\{a_0, a_1, \ldots, a_{n-1}\}$
+
+* **Saída**: a sequência dos $n$ dados ordenados $\{a_0', a_1', \ldots, a_{n-1}'\}$ tal que $a_0' \leq a_1' \leq \ldots \leq a_{n-1}'$
 
 ## Ordenação por seleção
 
@@ -64,7 +64,7 @@ Entradas e Saída como no ordena_selecao()
 
 1. Para i=1 até n-1:
    A. Faça chave = A[i] e j = i - 1
-   B. Enquanto j > 0 e A[j] > chave faça:
+   B. Enquanto j >= 0 e A[j] > chave faça:
       i.   A[j+1] = A[j]
       ii.  j = j - 1
    C. A[j+1] = chave
@@ -76,6 +76,9 @@ Entradas e Saída como no ordena_selecao()
 - O algoritmo, de novo, tem dois laços, um dentro do outro;
   - o laço externo percorre o vetor do segundo elemento para o último, isto é, executa as instruções A, B e C $n-1$ vezes;
   - o laço interno desloca para a direita os valores maiores do que A[i] para a direita para abrir espaço para colocar o A[i] na sua posição correta (instrução C)
+
+## cont. da Análise
+
 - Se a chave (valor de A[i]) for maior do que o valor mais a direita dos elementos já ordenados em ordem crescente, então, não há a necessidade de deslocar nenhum elemento já ordenado. Isto quer dizer que se o vetor já estiver ordenado, o laço interno não precisa executar as suas instruções e a complexidade do algoritmo é $\mathcal{O}(n)$ (melhor caso).
 - Se o vetor estiver ordenado na ordem decrescente, o laço interno tem de deslocar todos os elementos já ordenados. Neste caso, a complexidade do algoritmo é $\mathcal{O}(n^2)$ (pior caso).
 - No caso médio, a complexidade é $\mathcal{O}(n^2)$, mas existem muitas aplicações em que os dados já estão quase ordenados e, nestes casos, o algoritmo da ordenação por inserção é muito bom.
@@ -84,16 +87,28 @@ Entradas e Saída como no ordena_selecao()
 
 ```Python
 def insert_sort(vec,n):
-  for i in range(1,n-1):
+  for i in range(1,n):
     chave = vec[i]
     j = i - 1
-    while j > 0 and A[j] > chave:
+    while j >= 0 and A[j] > chave:
       vec[j+1] = vec[j]
       j = j - 1
     vec[j+1] = chave
 ```
 
 ## *Mergesort*
+
+* A ideia de base do algoritmo *mergesort* é juntar \(entrelaçar\) 2 vetores ordenados. Dado um vetor com n elementos, para simplificar, vamos supor que n é uma potência de 2. Vamos dividir o vetor em duas metades, ordenar as duas metades e juntá-las.
+* Como ordenamos as duas metades? Da mesma maneira que o vetor inicial, a não ser que o vetor seja unitário \(com um único elemento\). Observe o processo de recursão, a solução base \(quando o vetor só tem um elemento, ele já está ordenado\).
+
+```
+merge_sort(vec, ini, fim)
+  if fim - ini <=1 return
+  meio = (ini + fim + 1)/2
+  merge_sort(vec, ini, meio - 1)
+  merge_sort(vec, meio, fim)
+  merge(vec, ini, fim)
+```
 
 
 ## *Quicksort*
