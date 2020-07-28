@@ -98,7 +98,7 @@ def insert_sort(vec,n):
 
 ## *Mergesort*
 
-* A ideia de base do algoritmo *mergesort* é juntar \(entrelaçar\) 2 vetores ordenados. Dado um vetor com n elementos, para simplificar, vamos supor que n é uma potência de 2. Vamos dividir o vetor em duas metades, ordenar as duas metades e juntá-las.
+* A ideia de base do algoritmo *mergesort* é juntar \(intercalar\) 2 vetores ordenados. Dado um vetor com n elementos, para simplificar, vamos supor que n é uma potência de 2. Vamos dividir o vetor em duas metades, ordenar as duas metades e juntá-las.
 * Como ordenamos as duas metades? Da mesma maneira que o vetor inicial, a não ser que o vetor seja unitário \(com um único elemento\). Observe o processo de recursão, a solução base \(quando o vetor só tem um elemento, ele já está ordenado\).
 
 ```
@@ -110,5 +110,72 @@ merge_sort(vec, ini, fim)
   merge(vec, ini, fim)
 ```
 
+##
+
+```
+merge(vec, ini, meio, fim)
+  esquerda = vec[ini .. meio]
+  direita  = vec[meio + 1 .. r]
+  i, j, k = 0, 0 , ini
+  while i <= meio - ini and j <= fim = meio - 1
+    if esquerda[i] < direita[j]
+      vec[k] = esquerda[i]
+      i += 1
+    else
+      vec[k] = direita[j]
+      j += 1
+    k += 1
+  while i <= meio - ini
+    A[k] = esquerda[i]
+    i += 1
+    k += 1
+  while j <= fim - meio - 1
+    A[k] = direita[j]
+    j += 1
+    k += 1
+```
+
+##
+
+Observações:
+
+- O `merge_sort()` é recursivo. A cada vez o tamanho do problema é reduzido pela metade.
+- A operação de intercalar \(`merge()`\) 2 vetores ordenados é $\Theta(n)$
+- Para simplificar a operação de intercalagem, uma cópia do vetor (das partes do vetor) é feita. Isto faz com que o *mergesort* ocupe mais espaço memória do que outros algoritmos que ordenam os vetores no lugar \(*in-place*\). É possível imaginar uma implementação *in-place* da operação de intercalagem, mas ela ia exigir trocas de elementos feitas de uma maneira não trivial.
+- A equação de recursão é dada por: $T(n) = 2 T(\frac{n}{2}) + \Theta(n)$, o que resulta em uma complexidade temporal: $T(n) = \Theta(n \log n)$
+
 
 ## *Quicksort*
+
+Um algoritmo com uma complexidade quase tão boa quanto a do *mergesort* que tem a vantagem de ser *in-place* é o *quicksort*. O *quicksort* geralmente já está implementado em bibliotecas nas diferentes linguagens de programação. Veremos aqui o algoritmo geral e a analise deste.
+
+### Algoritmo Quicksort
+
+```
+quicksort(vec, ini, fim)
+  if ini >= fim return
+  q = particione(vec, ini, fim)
+  quicksort(vec, ini, q - 1)
+  quicksort(vec, q + 1, fim)
+```
+
+##
+```
+particione(vec, p, r)
+  q = p
+  for u = p until r - 1
+    if vec[u] <= vec[r]
+      swap(vec, u, q)
+      q++
+  swap(vec, q, r)
+  return q
+```
+
+## Análise do Quicksort
+
+- De novo temos um algoritmo recursivo, com características muito próximas do mergesort
+- Diferente do mergesort, o quicksort não precisa de cópias do vetor.
+- O elemento vec[r] é chamado de pivô do particionamento. Nesta operação, todos os elementos menores que o pivô são colocados à esquerda do pivô e todos os maiores ou iguais, à direita. O pivô é colocado na sua posição correta.
+- Depois do particionamento, os subvetores à esquerda e à direita podem estar fora de ordem, por isso eles são recursivamente ordenados pelo quicksort.
+- Idealmente, o pivô divide os subvetores em tamanhos quase iguais e com isto a complexidade temporal do algoritmo é $\mathcal{O}(n \log n)$.
+- Se um dos subvetores é nulo, isto é, o pivô é um dos elementos da ponta, temos o pior caso, e o algoritmo é $\mathcal{O}(n^2)$
